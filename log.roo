@@ -2,3 +2,62 @@
 project --topLevelPackage com.unistaffs --projectName UniStaff2 --java 6 --packaging WAR
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2012-12-08 14:06:54
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2012-12-08 14:10:46
+hint
+jpa setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+hint
+entity jpa --class com.unistaffs.entity.NamePrefix
+field string --fieldName prefix
+entity jpa --class ~.entity.BloodType
+field string --fieldName bloodType
+entity jpa --class ~.entity.Province
+field string --fieldName name
+entity jpa --class ~.entity.WorkType
+field string --fieldName name
+entity jpa --class ~.entity.EmployeeType
+field string --fieldName name
+entity jpa --class com.unistaffs.entity.member.AcademicPosition 
+field string --fieldName name
+entity jpa --class com.unistaffs.entity.member.University
+field string --fieldName name
+entity jpa --class com.unistaffs.entity.member.Salary
+field string --fieldName name
+entity jpa --class com.unistaffs.entity.member.AcademicHistory
+field number --fieldName graduateYear --type int --decimalMin 2480 --decimalMax 2600
+field string --fieldName program 
+field string --fieldName department --notNull 
+field reference --fieldName university --type ~.entity.member.University --cardinality ONE_TO_ONE 
+field string --fieldName otherUniversity
+field string --fieldName otherCountry
+entity jpa --class ~.entity.member.WorkPlace
+field string --fieldName department
+field string --fieldName faculty
+field reference --fieldName university --type ~.entity.member.University --cardinality ONE_TO_ONE 
+entity jpa --class ~.entity.member.Address
+field string --fieldName houseNo
+field string --fieldName soi
+field string --fieldName road
+field string --fieldName tumbon
+field string --fieldName district
+field reference --fieldName province --type ~.entity.member.Province
+entity jpa --class ~.entity.member.UniStaffInfo
+field string --fieldName name --notNull 
+field string --fieldName surName --notNull 
+field date --fieldName birthDate --type java.util.Calendar --notNull 
+field string --fieldName nationality --notNull 
+field string --fieldName telNumber --notNull 
+field string --fieldName pID --notNull --regexp [0-9]13
+field string --fieldName expertise
+field reference --fieldName namePrefix --type ~.entity.member.NamePrefix
+field reference --fieldName bloodType --type ~.entity.member.BloodType
+field reference --fieldName registrationAddress --type ~.entity.member.Address --notNull 
+field reference --fieldName contactAddress --type ~.entity.member.Address 
+field reference --fieldName workPlace --type ~.entity.member.WorkPlace
+field reference --fieldName workType --type ~.entity.member.WorkType
+field reference --fieldName employeeType --type ~.entity.member.EmployeeType
+field reference --fieldName academicPosition --type ~.entity.member.AcademicPosition
+field reference --fieldName salary --type ~.entity.member.Salary
+field reference --fieldName bachalorDegree --type ~.entity.member.AcademicHistory
+field reference --fieldName masterDegree --type ~.entity.member.AcademicHistory
+field reference --fieldName phdDegree --type ~.entity.member.AcademicHistory
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2012-12-08 14:56:21
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2012-12-09 09:32:33
